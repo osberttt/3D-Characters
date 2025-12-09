@@ -92,25 +92,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     private void HandleAnimation()
     {
-        if (move.magnitude >= 0.1f)
-        {
-            animator.SetBool("Walking", true);
-            animator.SetBool("Sprinting", false);
-        }
-        else
-        {
-            animator.SetBool("Walking", false);
-            animator.SetBool("Sprinting", false);
-        }
+        animator.SetBool("Walking", move.magnitude >= 0.1f);
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            animator.SetBool("Sprinting", true);
-            animator.SetBool("Walking", false);
-        }
-        else
-        {
-            animator.SetBool("Sprinting", false);
-        }
+        animator.SetBool("Sprinting", sprintAction.IsPressed());
     }
 }
